@@ -1,18 +1,36 @@
 {% extends "base.html" %}
 
 {% block content  %}
-    <h1>Create task</h1>
 
-    {{error}}
-    
-    <form action="/create_task/" method="POST">
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+    <form action="/create_task/" method="POST" class="card card-body" enctype="multipart/form-data">
+        {{error}}
         {% csrf_token %}
-        {{form}}
-
-        <button>
-            Save
-        </button>
-
-    </form>
-
+        <h1 class="text-center">Crear publicacion</h1>
+    <div>
+        <label for="title" class="label">
+            <input name="title" type="text" id="title" required placeholder=" " maxlength="100" class="input">
+            <span class="label_name">Ingresa el título</span>
+        </label>
+    </div>
+    <div>
+        <label for="description" class="label">
+            <textarea name="description" id="description" rows="4" cols="50" class="input" placeholder=" "></textarea>
+            <span class="label_name">Descripción</span>
+        </label>
+    </div>
+    <div>
+        <label for="image" class="label">
+            <input name="image" type="file" id="image" class="input">
+            <span class="label_name">Sube una imagen</span>
+        </label>
+    </div>
+    <input type="hidden" name="user" value="{{ user.id }}">  <!-- Campo oculto para el usuario -->
+    <button type="submit" class="btn btn-primary mt-3">Crear Tarea</button>
+</form>
+</div>
+</div>
+</main>
 {% endblock  %}

@@ -8,6 +8,7 @@ class Task(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='media/', null=True, blank=True)  # Agregado el campo para la imagen
     
     def __str__(self):
         return self.title + ' - by ' + self.user.username

@@ -2,20 +2,31 @@
 
 {% block content %}
 
-<h1>{{task.title}}</h1>
+<h1>{{ task.title }}</h1>
 
-    {{error}}
+{{ error }}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button>Update</button>
-    </form> 
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <label for="image">Imagen actual:</label>
+        {% if task.image.url %}
+            <img src="{{ task.image.url }}" alt="{{ task.title }}" style="max-width: 100px; display: block; margin: 10px 0;">
+        {% else %}
+            <p>No hay imagen disponible.</p>
+        {% endif %}
+        <label for="image" class="label">
+            <input name="image" type="file" id="image" class="input">
+            <span class="label_name">Actualizar imagen (opcional)</span>
+        </label>
+    </div>
+    <button type="submit">Actualizar</button>
+</form>
 
-    <form action="{% url 'delete_task' task.id %}" method="POST">
-        {% csrf_token %}
-        <button>Delete</button>
-    </form>
+<form action="{% url 'delete_task' task.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
 
 {% endblock %}
-

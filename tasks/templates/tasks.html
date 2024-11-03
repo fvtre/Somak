@@ -3,14 +3,13 @@
 {% block content %}
 <main class="container">
     <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1>tasks</h1>
+        <div class="col-md-6 offset-md-3 mt-5">
             <ul>
                 {% for task in tasks %}
                 <li>
                     <a href="{% url 'task_detail' task.id %}">
-            
                     <h5>{{task.title}}</h5>
+                    <img src="{{ task.image.url }}" alt="Image for {{ task.title }}" style="max-width: 200px; display: block; margin: 10px 0;">
                     <p>{{task.description}}</p>
                     <p>{{task.user.username}}</p>
             
