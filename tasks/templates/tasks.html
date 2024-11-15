@@ -2,25 +2,40 @@
 
 {% block content %}
 <main class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 mt-5">
-            <ul>
-                {% for task in tasks %}
-                <li>
-                    <a href="{% url 'task_detail' task.id %}">
-                    <h5>{{task.title}}</h5>
-                    <img src="{{ task.image.url }}" alt="Image for {{ task.title }}" style="max-width: 200px; display: block; margin: 10px 0;">
-                    <p>{{task.description}}</p>
-                    <p>{{task.user.username}}</p>
-            
+    <div class="row justify-content-center">
+        {% for task in tasks %}
+            <div class="col-md-5 mb-5 mt-5">
+                <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden" style="transition: transform 0.3s;">
+                    <a href="{% url 'task_detail' task.id %}" class="text-decoration-none text-dark">
+                        <div class="card-img-container overflow-hidden" style="position: relative;">
+                            <img src="{{ task.image.url }}" alt="Image for {{ task.title }}" class="card-img-top" style="max-height: 250px; object-fit: cover; transition: transform 0.3s;">
+                        </div>
+                        <div class="card-body text-center p-3">
+                            <h6 class="card-title fw-bold" style="font-size: 1rem;">{{ task.title }}</h6>
+                            <p class="card-text" style="font-size: 0.9rem;">{{ task.description|truncatewords:15 }}</p>
+                            <p class="text-muted" style="font-size: 0.8rem;"><small><strong>Creado por</strong> {{ task.user.username }}</small></p>
+                        </div>
                     </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </main>
 
-
+<style>
+    .card {
+        transition: transform 0.3s;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .card:hover {
+        transform: scale(1.03);
+    }
+    .card-img-top {
+        transition: transform 0.3s;
+    }
+    .card:hover .card-img-top {
+        transform: scale(1.08);
+    }
+</style>
 {% endblock %}
-

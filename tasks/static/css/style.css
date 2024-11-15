@@ -49,3 +49,143 @@
     right: 10px;
     z-index: 1000;
 }
+
+body {
+  background-color: #e9ecef; /* Color de fondo más claro */
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Fuente más moderna */
+  line-height: 1.6; /* Mejorar la legibilidad */
+}
+
+.container {
+  max-width: 1200px; /* Ancho máximo para el contenedor */
+  margin: auto; /* Centrar el contenedor en la página */
+  padding: 20px; /* Espacio interno */
+}
+
+.row {
+  margin-top: 20px; /* Espacio superior entre filas */
+}
+
+.task {
+  border: 1px solid #ddd; /* Borde ligero */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 20px; /* Espacio interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.2s, box-shadow 0.2s; /* Transiciones suaves */
+  min-height: 250px; /* Establecer una altura mínima */
+}
+
+.task img {
+  max-width: 60%; /* Ancho máximo de la imagen */
+  height: auto; /* Altura automática */
+  margin: 10px 0; /* Margen vertical */
+  border-radius: 12px; /* Bordes redondeados en la imagen */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para la imagen */
+}
+
+.text-center {
+  text-align: center; /* Centra el contenido de este contenedor */
+}
+
+
+.task:hover {
+  transform: scale(1.02); /* Escalar ligeramente al pasar el mouse */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Sombra más intensa al hacer hover */
+}
+
+.task h3 {
+  color: #495057; /* Color gris oscuro para el texto del título */
+  font-size: 1.6rem; /* Tamaño de fuente del título */
+  margin-bottom: 15px; /* Espacio inferior */
+}
+
+.task p {
+  color: #343a40; /* Color del texto de la descripción */
+  margin: 10px 0; /* Margen vertical entre párrafos */
+}
+
+.task strong {
+  font-weight: bold; /* Hacer el texto en negrita */
+  color: #6c757d; /* Color gris para el texto del creador */
+}
+
+@media (max-width: 768px) {
+  .task {
+      margin-bottom: 30px; /* Margen inferior en pantallas pequeñas */
+      padding: 15px; /* Reducir el padding en pantallas pequeñas */
+  }
+  .task img {
+      max-width: 80%; /* Aumentar el ancho máximo de la imagen en pantallas pequeñas */
+  }
+}
+
+/* Estilos generales para el formulario */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Estilo para las imágenes */
+img.img-thumbnail {
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Estilos para los botones */
+button {
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.alert {
+  margin-top: 20px;
+}

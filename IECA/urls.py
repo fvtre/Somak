@@ -31,6 +31,10 @@ urlpatterns = [
     path('create_task/', views.create_task,name='create_task'),
     path('task_detail/<int:task_id>/', views.task_detail,name='task_detail'),
     path('task_detail/<int:task_id>/delete', views.delete_task,name='delete_task'),
+    path('casadepaz/', views.casadepaz,name='casadepaz'),
+    path('aviva2/', views.aviva2,name='aviva2'),
+    path('avivakids/', views.avivakids,name='avivakids'),
+    path('jovenes/', views.jovenes,name='jovenes'),
 
 ]
 if settings.DEBUG:

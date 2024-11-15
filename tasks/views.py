@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
-    tasks = Task.objects.all()  # Obtener todas las tareas de todos los usuarios
+    tasks = Task.objects.all().order_by('-created_at')  # Ordenar de más recientes a más antiguas
     return render(request, 'home.html', {'tasks': tasks})
 
 def signup(request):
@@ -38,7 +38,7 @@ def signup(request):
  
 @login_required       
 def tasks (request):
-    tasks = Task.objects.filter(user=request.user)
+    tasks = Task.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'tasks.html', {'tasks': tasks})
 
 @login_required
@@ -63,24 +63,33 @@ def signin (request):
             return redirect('tasks')
 
 @login_required 
-def create_task (request):
+def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html', {
-            'form': TaskForm
+            'form': TaskForm()
         })
     else:
         try:
             form = TaskForm(request.POST, request.FILES)
-            new_task = form.save(commit=False)
-            new_task.user = request.user 
-            new_task.save()
-            print(new_task)
-            return redirect('home')
+            if form.is_valid():
+                new_task = form.save(commit=False)
+                new_task.user = request.user  # Asociar la tarea al usuario actual
+                new_task.save()
+                print(new_task)  # Ver el objeto creado en la consola (esto es opcional)
+                return redirect('home')  # Redirigir a la página de inicio
+            else:
+                # Aquí se imprime cada uno de los errores
+                print(form.errors)  # Esto imprimirá los errores del formulario en la consola
+                return render(request, 'create_task.html', {
+                    'form': form,  # Pasar el formulario con los errores
+                    'error': 'Por favor, provee datos válidos.'
+                })
         except ValueError:
             return render(request, 'create_task.html', {
-            'form': TaskForm,
-            'error': 'Please provide valida data'
+                'form': TaskForm(),
+                'error': 'Hubo un error al crear la tarea.'
             })
+
 
 @login_required
 def task_detail(request, task_id):
@@ -115,3 +124,19 @@ def delete_task(request, task_id):
     if request.method == 'POST':
         task.delete()
         return redirect('tasks')
+
+def casadepaz(request):
+    tasks = Task.objects.filter(category='casadepaz').order_by('-created_at')
+    return render(request, 'casadepaz.html', {'tasks': tasks})
+
+def aviva2(request):
+    tasks = Task.objects.filter(category='aviva2').order_by('-created_at')
+    return render(request, 'aviva2.html', {'tasks': tasks})
+
+def avivakids(request):
+    tasks = Task.objects.filter(category='avivakids').order_by('-created_at')
+    return render(request, 'avivakids.html', {'tasks': tasks})
+
+def jovenes(request):
+    tasks = Task.objects.filter(category='jovenes').order_by('-created_at')
+    return render(request, 'jovenes.html', {'tasks': tasks})

@@ -2,31 +2,71 @@
 
 {% block content %}
 
-<h1>{{ task.title }}</h1>
+<div class="d-flex justify-content-center align-items-center">
+    <div class="container" style="max-width: 600px;">
+    <h1 class="text-center">{{ task.title }}</h1>
 
-{{ error }}
+    {% if error %}
+        <div class="alert alert-danger text-center">{{ error }}</div>
+    {% endif %}
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div>
-        <label for="image">Imagen actual:</label>
-        {% if task.image.url %}
-            <img src="{{ task.image.url }}" alt="{{ task.title }}" style="max-width: 100px; display: block; margin: 10px 0;">
-        {% else %}
-            <p>No hay imagen disponible.</p>
-        {% endif %}
-        <label for="image" class="label">
-            <input name="image" type="file" id="image" class="input">
-            <span class="label_name">Actualizar imagen (opcional)</span>
-        </label>
-    </div>
-    <button type="submit">Actualizar</button>
-</form>
+    <form method="POST" enctype="multipart/form-data" class="card card-body mt-4">
+        {% csrf_token %}
+        <h3 class="text-center">Actualizar tarea</h3>
+        
+        <div class="form-group text-center">
+            <label for="id_title">Título</label>
+            {{ form.title }}
+            {% for error in form.title.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+    
+        <div class="form-group text-center">
+            <label for="id_description">Descripción</label>
+            {{ form.description }}
+            {% for error in form.description.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+    
+        <div class="form-group text-center">
+            <label for="id_category">Categoría</label>
+            {{ form.category }}
+            {% for error in form.category.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
 
-<form action="{% url 'delete_task' task.id %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Eliminar</button>
-</form>
+        <div class="form-group text-center">
+            <label for="image">Imagen actual</label>
+            {% if task.image.url %}
+                <img src="{{ task.image.url }}" alt="{{ task.title }}" class="img-thumbnail mb-3">
+            {% else %}
+                <p>No hay imagen disponible.</p>
+            {% endif %}
+        </div>
+
+        <div class="form-group text-center">
+            <label for="image" class="label">
+                <input name="image" type="file" id="image" class="input">
+                <span class="label_name">Actualizar imagen (opcional)</span>
+            </label>
+            {% for error in form.image.errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+        </div>
+        <form action="{% url 'delete_task' task.id %}" method="POST" class="mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100">Eliminar</button>
+        </form>
+    </form>
+
+</div>
+</div>
 
 {% endblock %}
