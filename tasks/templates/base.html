@@ -84,10 +84,10 @@
                 <img src="{% static 'img/avivakids.jpg' %}" alt="..." class="d-block w-100" style="width: 100%; height: 300px;">
               </div>
               <div class="carousel-item">
-                <img src="{% static 'img/jovenes.jpg' %}" alt="..." class="d-block w-100" style="width: 100%; height: 300px;">
+                <img src="{% static 'img/cr.jpg' %}" alt="..." class="d-block w-100" style="width: 100%; height: 300px;">
               </div>
               <div class="carousel-item">
-                <img src="{% static 'img/santacena.jpg' %}" alt="..." class="d-block w-100" style="width: 100%; height: 300px;">
+                <img src="{% static 'img/ca.jpg' %}" alt="..." class="d-block w-100" style="width: 100%; height: 300px;">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -99,6 +99,34 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>  
+
+          <style>
+            .yt {
+                position: fixed;
+                width: 75px;
+                height: 60px;
+                bottom: 30px; /* Ubicación desde el borde inferior */
+                left: 30px; /* Ubicación desde el borde derecho */
+                text-align: center;
+                border-radius: 30%;
+                background-color: red;
+                color: white;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
+            }
+            
+            .yt img {
+                width: 110%;
+                height: 100%;
+                padding: 10px;
+                border-radius: 10%;
+            }
+        </style>
+
+          <div class="yt" id="liveIndicator" onclick="window.open('https://www.youtube.com/watch?v=QRTJFl9hvzk', '_blank')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo">
+          </div>
+
           <div> 
             <style>
               .whatsapp-float {
@@ -125,11 +153,6 @@
             <a href="https://wa.me/+56964934688?text=Hola,%20tengo%20una%20consulta" class="whatsapp-float" target="_blank">
               <img src="{% static 'img/wsp.jpeg' %}" alt="WhatsApp">
             </a>
-          </div>
-        
-          <div id="liveIndicator" style="display: none; cursor: pointer; font-family: Arial, sans-serif; font-size: 18px; color: #FF0000; display: flex; align-items: center; gap: 8px;" onclick="window.open('https://www.youtube.com/watch?v=QRTJFl9hvzk', '_blank')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo" style="width: 20px; height: 20px;">
-            <span style="margin: 0;">En Vivo</span>
           </div>
         
         {% block content %}

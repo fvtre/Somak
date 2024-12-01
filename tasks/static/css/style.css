@@ -38,18 +38,6 @@
   background-color: white; /* Cambia a blanco en el enfoque */
 }
 
-  #liveIndicator {
-    background-color: red;
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 5px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-}
-
 body {
   background-color: #e9ecef; /* Color de fondo más claro */
   font-family: 'Helvetica Neue', Arial, sans-serif; /* Fuente más moderna */
