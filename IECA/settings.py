@@ -80,19 +80,19 @@ WSGI_APPLICATION = 'IECA.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 #DATABASES = {
-#    'default': dj_database_url.config(
-#        default='postgresql://postgres:postgres@localhost/postgres',
-#        conn_max_age=600
-#    )
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
 #}
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='postgresql://ieca_wr0o_user:j0CkxWl4p6abG4xtrAE7mXYsuROjXfd1@dpg-ct6gtsl6l47c7384a9tg-a.oregon-postgres.render.com/ieca_wr0o',
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
