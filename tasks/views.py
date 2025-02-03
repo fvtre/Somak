@@ -6,6 +6,8 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import TaskForm
 from .models import Task
 from django.contrib.auth.decorators import login_required
+from cloudinary.uploader import upload
+
 
 # Create your views here.
 
