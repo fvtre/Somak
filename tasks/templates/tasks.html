@@ -13,7 +13,7 @@
                         <div class="card-body text-center p-3">
                             <h6 class="card-title fw-bold" style="font-size: 1rem;">{{ task.title }}</h6>
                             <p class="card-text" style="font-size: 0.9rem;">{{ task.description|truncatewords:15 }}</p>
-                            <p class="text-muted" style="font-size: 0.8rem;"><small><strong>Creado por</strong> {{ task.user.username }}</small></p>
+                            <p class="text-muted" style="font-size: 0.8rem;"><small><strong>Creado por</strong> {{ task.user }}</small></p>
                         </div>
                     </a>
                 </div>

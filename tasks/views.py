@@ -14,32 +14,44 @@ def home(request):
     return render(request, 'home.html', {'tasks': tasks})
 
 def signup(request):
-
     if request.method == 'GET':
         return render(request, 'signup.html', {
-        'form': UserCreationForm
-    })
+            'form': UserCreationForm
+        })
     else:
-        if request.POST['password1'] == request.POST ['password2']:
-            try:    
-                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
-                user.save()
-                login(request, user)
-                return redirect(tasks)
-            except:
+        # Verificar si las contraseñas coinciden
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                # Crear el usuario con los nuevos campos
+                user = User.objects.create_user(
+                    username=request.POST['username'],
+                    password=request.POST['password1'],
+                    email=request.POST['email'],  # Nuevo campo email
+                    first_name=request.POST['first_name'],  # Nuevo campo first_name
+                    last_name=request.POST['last_name']  # Nuevo campo last_name
+                )
+                user.save()  # Guardar el usuario
+                login(request, user)  # Iniciar sesión automáticamente
+                return redirect('tasks')  # Redirigir a la vista de tareas
+            except Exception as e:
+                # Capturar cualquier error y mostrar un mensaje
                 return render(request, 'signup.html', {
-                'form': UserCreationForm,
-                "error": 'Username already exists'
+                    'form': UserCreationForm,
+                    "error": f'Error al crear el usuario: {str(e)}'
                 })
-        return render(request, 'signup.html', {
+        else:
+            # Si las contraseñas no coinciden
+            return render(request, 'signup.html', {
                 'form': UserCreationForm,
-                "error": 'Password do not match'
-                })
+                "error": 'Las contraseñas no coinciden.'
+            })
+
  
 @login_required       
-def tasks (request):
+def tasks(request):
     tasks = Task.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'tasks.html', {'tasks': tasks})
+
 
 @login_required
 def signout (request):

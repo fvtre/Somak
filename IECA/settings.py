@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'ieca.onrender.com']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
@@ -82,20 +82,16 @@ WSGI_APPLICATION = 'IECA.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ieca_hx1n',  # Nombre de la base de datos
+        'USER': 'ieca_hx1n_user',  # Nombre de usuario
+        'PASSWORD': 'hiDRNhSrQ9qdsZTm7yutekw2xTIvLJGu',  # Contraseña
+        'HOST': 'dpg-cufvi42n91rc73ckcn40-a.oregon-postgres.render.com',  # Host de PostgreSQL
+        'PORT': '5432',  # Puerto de PostgreSQL
     }
 }
 
-#DATABASES = {
-    #'default': dj_database_url.config(
-   #     default='postgresql://ieca_wr0o_user:j0CkxWl4p6abG4xtrAE7mXYsuROjXfd1@dpg-ct6gtsl6l47c7384a9tg-a.oregon-postgres.render.com/ieca_wr0o',
-  #      conn_max_age=600
- #   )
-#}
 
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
