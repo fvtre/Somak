@@ -30,8 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+# Si estás en producción, establece DEBUG=False explícitamente
+DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Cambia a True si quieres habilitarlo localmente
 
 ALLOWED_HOSTS = ['127.0.0.1', 'ieca.onrender.com']
 
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',  # Asegúrate de que esté antes de 'django.contrib.staticfiles'
     'django.contrib.staticfiles',
     'tasks',
     'cloudinary',
