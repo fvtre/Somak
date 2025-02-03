@@ -49,6 +49,11 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'KgPf02SITDk9_qC97T3vF670VcM',
 }
 
+cloudinary.config( 
+  cloud_name = CLOUDINARY_STORAGE['CLOUD_NAME'],  
+  api_key = CLOUDINARY_STORAGE['API_KEY'],  
+  api_secret = CLOUDINARY_STORAGE['API_SECRET']
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,7 +64,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tasks',
     'cloudinary',
-    'cloudinary_storage'
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
