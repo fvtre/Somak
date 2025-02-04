@@ -1,22 +1,3 @@
-/* Estilo global de la barra de navegación */
-.navbar {
-  display: flex;
-  justify-content: space-between; /* Asegura que el logo y el botón estén a los extremos */
-}
-
-/* Alineación del botón hamburguesa a la derecha en pantallas pequeñas */
-@media (max-width: 768px) {
-.navbar-toggler {
-    margin-left: auto !important; /* Alineación a la derecha */
-    border: none; /* Elimina el borde del botón */
-}
-
-.navbar-collapse {
-    text-align: center; /* Centra el contenido del menú en pantallas pequeñas */
-}
-}
-
-
 .input {
   grid-area: input;
   width: 60vw; /* Ajusta el ancho al 60% del ancho de la ventana */
@@ -58,7 +39,7 @@
 }
 
 body {
-  background-color: #e9ecef; /* Color de fondo más claro */
+  background-color: white; /* Color de fondo más claro */
   font-family: 'Helvetica Neue', Arial, sans-serif; /* Fuente más moderna */
   line-height: 1.6; /* Mejorar la legibilidad */
 }
