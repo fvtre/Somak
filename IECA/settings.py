@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # Si estás en producción, establece DEBUG=False explícitamente
-DEBUG = os.getenv('DEBUG', 'False') == 'True'  # Cambia a True si quieres habilitarlo localmente
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['127.0.0.1', 'ieca.onrender.com']
 
