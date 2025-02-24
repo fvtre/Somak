@@ -1,5 +1,5 @@
 """
-WSGI config for IECA project.
+WSGI config for Somak project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
