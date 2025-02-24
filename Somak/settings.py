@@ -106,14 +106,11 @@ WSGI_APPLICATION = 'Somak.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ieca_hx1n',  # Nombre de la base de datos
-        'USER': 'ieca_hx1n_user',  # Nombre de usuario
-        'PASSWORD': 'hiDRNhSrQ9qdsZTm7yutekw2xTIvLJGu',  # Contraseña
-        'HOST': 'dpg-cufvi42n91rc73ckcn40-a.oregon-postgres.render.com',  # Host de PostgreSQL
-        'PORT': '5432',  # Puerto de PostgreSQL
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",  # Archivo de base de datos SQLite en la raíz del proyecto
     }
 }
+
 
 
 
