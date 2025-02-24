@@ -27,7 +27,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Empresa</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Obras</a></li>
@@ -91,34 +91,6 @@
             </button>
           </div>  
 
-          <style>
-            
-            .yt {
-                position: fixed;
-                width: 75px;
-                height: 60px;
-                bottom: 30px; /* Ubicación desde el borde inferior */
-                left: 30px; /* Ubicación desde el borde derecho */
-                text-align: center;
-                border-radius: 30%;
-                background-color: red;
-                color: white;
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-                z-index: 1000; /* Asegura que el botón esté encima de otros elementos */
-            }
-            
-            .yt img {
-                width: 110%;
-                height: 100%;
-                padding: 10px;
-                border-radius: 10%;
-            }
-        </style>
-
-          <div class="yt" id="liveIndicator" onclick="window.open('https://www.youtube.com/watch?v=QRTJFl9hvzk', '_blank')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo">
-          </div>
-
           <div> 
             <style>
               .whatsapp-float {
@@ -168,47 +140,6 @@
             });
         </script>
         
-        <script>
-          // Función para verificar el estado en vivo en YouTube
-          async function getLiveVideoId() {
-            const apiKey = 'AIzaSyAHWyxTQ_DTsoTRz6obZRr_CDNYM673Ei4';
-            const channelId = 'UCWMgW_kUmyuFSbkixOqEN1A'; // El ID de tu canal de YouTube
-        
-            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&eventType=live&type=video&key=${apiKey}`;
-        
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-        
-                if (data.items && data.items.length > 0) {
-                    return data.items[0].id.videoId; // Retorna el ID del video en vivo actual
-                } else {
-                    return null; // No hay transmisión en vivo
-                }
-            } catch (error) {
-                console.error("Error al obtener el ID del video en vivo:", error);
-                return null;
-            }
-        }
-        
-        // Usa la función para actualizar el indicador de transmisión en vivo
-        async function updateLiveIndicator() {
-            const videoId = await getLiveVideoId();
-            const liveIndicator = document.getElementById("liveIndicator");
-        
-            if (videoId) {
-                liveIndicator.style.display = "flex";
-                liveIndicator.onclick = () => window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-            } else {
-                liveIndicator.style.display = "none";
-            }
-        }
-        
-        // Verifica al cargar la página y cada 30 segundos
-        updateLiveIndicator();
-        setInterval(updateLiveIndicator, 30000);
-        
-      </script>
     </body>
     <footer class="bg-dark text-light py-2 mt-5">
       <div class="container text-center">
