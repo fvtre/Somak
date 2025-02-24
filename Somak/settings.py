@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'tasks',
     'cloudinary',
     'cloudinary_storage',
+    'Somak',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'IECA.urls'
+ROOT_URLCONF = 'Somak.urls'
 
 TEMPLATES = [
     {
@@ -97,7 +98,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'IECA.wsgi.application'
+WSGI_APPLICATION = 'Somak.wsgi.application'
 
 
 # Database
